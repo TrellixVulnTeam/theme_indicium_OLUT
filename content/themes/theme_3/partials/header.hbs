@@ -1,0 +1,56 @@
+<header class="index-header flex flex-col relative h-2/4">
+  <img
+    src="https://indicium-cdn.s3.amazonaws.com/indicium-blog/images/2021/theme_indicum/bg-header.png"
+    alt="Background Header"
+    class="absolute w-full h-full object-cover"
+  />
+  <div
+    class="flex justify-center mx-auto text-white"
+    style="font-family: 'Titillium Web', sans-serif;"
+  >
+    <h1 class="title text-6xl text-center absolute bottom-2/4">TÍTULO DE BOAS
+      VINDAS</h1>
+    <h2 class="subtitle text-3xl absolute bottom-1/4">Alguma frase de descrição
+      do blog</h2>
+  </div>
+
+  <div class="flex justify-center mx-auto">
+    <nav class="navbar text-center absolute bottom-0">
+      <div class="navbar-menu divide-x divide-white text-xl text-white">
+        <a href="/" class="navbar-item px-3">
+          Home
+        </a>
+        <a href="/" class="navbar-item px-3">
+          Novidades
+        </a>
+        <a href="/" class="navbar-item px-3">
+          Na prática
+        </a>
+        <a class="relative inline-flex navbar-item px-3">
+          <select class="text-white bg-transparent">
+            <option class="text-gray-600">Tags</option>
+            {{#get "tags" limit="all" include="count.posts"}}
+              {{#if tags}}
+                <div class="col-sm-6 col-lg-4">
+                  <ul class="tags">
+                    {{#foreach tags}}
+                      {{#if count.posts}}
+                        <option class="text-gray-600">
+                          <a class="" href="{{url}}">{{name}}</a>
+                        </option>
+                      {{/if}}
+                    {{/foreach}}
+                  </ul>
+                </div>
+              {{/if}}
+            {{/get}}
+          </select>
+        </a>
+        <a href="/" class="navbar-item px-3">
+          Materiais gratuitos
+        </a>
+      </div>
+    </nav>
+  </div>
+
+</header>

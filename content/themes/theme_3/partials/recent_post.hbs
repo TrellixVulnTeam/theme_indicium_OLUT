@@ -1,0 +1,86 @@
+<style>
+  p { color: #8a8a89 }
+</style>
+
+{{#get "posts" include="tags,authors,date" limit="1" as |recent|}}
+  <div class="m-20" style="height: 40em;">
+    {{#foreach recent}}
+      <div class="flex card-recent flex-row bg-white">
+        {{#if feature_image}}
+          <div class="card-image w-2/5">
+            <img
+              class="h-full w-full"
+              src="{{feature_image}}"
+              alt="{{title}}"
+            />
+          </div>
+        {{/if}}
+        <div class="w-3/5">
+          <div class="flex flex-col">
+            <div class="flex flex-row-reverse">
+              <div class="flex flex-row gap-3">
+                {{#foreach tags}}
+                  <div class="flex">
+                    <a
+                      href="#"
+                      class="px-4 py-1 text-white font-bold uppercase text-xs"
+                      style="background-color: #F6A500; font-family: 'Titillium Web', sans-serif;"
+                    >
+                      {{name}}
+                    </a>
+                  </div>
+                {{/foreach}}
+              </div>
+            </div>
+            <div class="max-w-screen-xl p-20">
+              <a
+                href="{{url}}"
+                class="leading-none text-6xl"
+                style="color: #129fd9;
+                font-family: 'Titillium Web', sans-serif;
+                "
+              >
+                {{title}}
+              </a>
+
+              <p class="text-xl leading-normal my-4">
+                {{#if meta_description}}
+                  {{meta_description}}
+                {{else}}
+                  {{excerpt words="40"}}
+                {{/if}}
+              </p>
+            </div>
+            <div class="flex flex-col gap-5 px-16">
+              {{#foreach authors}}
+                <div class="flex flex-row gap-2">
+                    <img
+                      class="h-10 w-10 rounded-full object-cover"
+                      src={{profile_image}}
+                      alt="Profile Image"
+                    />
+                    <p class="flex items-center" style="color: #9c8b67">
+                      Por
+                      {{name}}
+                    </p>
+                </div>
+              {{/foreach}}
+              <time class="date text-sm font-bold" style="color: #8a8a89">
+                {{date published_at format="DD MMMM, YYYY"}}
+              </time>
+              <div
+                class="flex flex-row-reverse items-center text-lg py-5"
+                style="color: #8a8a89;"
+              >
+                {{reading_time
+                  minute="Apenas um minuto"
+                  minutes="% minutos de leitura"
+                }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/foreach}}
+  </div>
+{{/get}}

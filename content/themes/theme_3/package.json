@@ -1,0 +1,15 @@
+{
+    "name" : "indicium-theme3",
+    "description": "Theme based in new Indicium Identity",
+    "version": "0.0.1",
+    "engines" : {
+        "ghost": ">=1.0.0"
+    },
+    "author": {
+        "name" : "Gabriela Eller",
+        "email": "gabriela.eller@indicium.tech"
+    },
+    "config" : {
+        "posts_per_page":5
+    }
+}

@@ -1,0 +1,71 @@
+<article class="card" style="height: 40rem;">
+  {{#if feature_image}}
+    <div class="mb-8 w-full h-2/5 mx-auto relative">
+      <img
+        src="{{feature_image}}"
+        class="absolute left-0 top-0 w-full h-full z-0 object-cover"
+      />
+      <div class="flex flex-row-reverse">
+        <div class="relative">
+          {{#if tags}}
+            <div class="flex flex-row gap-3">
+              {{#foreach tags}}
+                <div class="flex">
+                  <a
+                    href="#"
+                    class="px-4 py-1 text-white font-bold uppercase text-xs"
+                    style="background-color: #F6A500; font-family: 'Titillium Web', sans-serif;"
+                  >
+                    {{name}}
+                  </a>
+                </div>
+              {{/foreach}}
+            </div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+  <div class="px-8">
+    <a
+      href={{url}}
+      class="leading-none text-3xl"
+      style="color: #323b8e"
+    >{{title}}</a>
+    <div class="content">
+      <p class="text-md my-5">
+        {{#if meta_description}}
+          {{meta_description}}
+        {{else}}
+          {{excerpt words="40"}}
+        {{/if}}
+      </p>
+      {{#if authors}}
+        <div class="flex flex-col gap-3">
+          <div class="flex flex-row gap-5">
+            {{#foreach authors}}
+              <img
+                class="h-10 w-10 rounded-full object-cover"
+                src={{profile_image}}
+                alt="Profile Image"
+              />
+              <div class="flex flex-col">
+                <p style="color: #9c8b67">
+                  Por
+                  {{name}}
+                </p>
+                <time class="text-xs" style="color: #8a8a89">{{date format="DD MMMM YYYY"}}</time>
+              </div>
+            {{/foreach}}
+          </div>
+          <div class="flex flex-row-reverse items-center text-md" style="color: #8a8a89">
+            {{reading_time
+              minute="Apenas um minuto"
+              minutes="% minutos de leitura"
+            }}
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</article>

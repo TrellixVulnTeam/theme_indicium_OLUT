@@ -1,0 +1,9 @@
+{{!-- Related Posts --}}
+{{#get "posts" include="tags,authors" limit="3" filter="id:-{{id}}+tag:{{primary_tag.slug}}" as |related|}}
+  <section class="related-posts">
+    <h3 class="related-title">{{title}}</h3>
+    {{#foreach related}}
+     {{title}}
+    {{/foreach}}
+  </section>
+{{/get}}

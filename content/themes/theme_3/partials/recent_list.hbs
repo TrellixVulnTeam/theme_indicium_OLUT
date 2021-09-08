@@ -1,0 +1,11 @@
+{{#get "posts" limit="3" filter="id:-{{post.id}}" include="title" }}
+{{#if posts}}
+<div>
+{{#foreach posts}}
+<div>
+{{title}}
+</div>
+{{/foreach}}
+</div>
+{{/if}}
+{{/get}}

@@ -1,0 +1,54 @@
+<nav
+  class="pagination text-gray-500 flex flex-row gap-6 flex justify-center"
+  role="navigation"
+>
+  <div class="pagination-left flex items-center">
+    {{#if prev}}
+      <a class="newer-posts flex flex-row gap-3" href="{{page_url prev}}">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M7 16l-4-4m0 0l4-4m-4 4h18"
+          ></path>
+        </svg>
+        <span class="text-lg">
+          Anterior
+        </span>
+      </a>
+    {{/if}}
+  </div>
+  <span
+    class="page-number ring-4 p-3 rounded-lg font-semibold text-xl ring-gray-500 h-12 w-56 text-center"
+  >Página {{page}} de {{pages}}</span>
+  <div class="pagination-right flex items-center">
+    {{#if next}}
+      <a class="older-posts flex flex-row gap-3" href="{{page_url next}}">
+        <span class="text-lg">
+          Próximo
+        </span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          ></path>
+        </svg>
+      </a>
+    {{/if}}
+  </div>
+</nav>

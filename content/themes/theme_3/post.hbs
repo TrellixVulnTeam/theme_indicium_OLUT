@@ -1,0 +1,151 @@
+{{!-- {{!< default}} --}}
+
+<style>
+  .content {
+    line-height: 3.2rem;
+     text-align: justify;
+    color: #8a8a89
+
+  }
+
+ p {
+    padding-top: 1.5rem;
+    color: #8a8a89
+  }
+
+ h1,h2,h3,h4,h5 {
+     padding-top: 2rem;
+     color: #119ED9;
+     font-family: 'Titillium Web', sans-serif;
+    }
+
+  h2 {
+    font-size: 2.2rem;
+    line-height: 1.2
+  }
+
+  h5 {
+    color: #119ED9;
+    text-align:center
+  }
+ 
+  ul {
+    list-style-type: disc;
+    margin: 0 1.7rem
+
+  }
+  ol {
+    list-style-type: decimal;
+    margin: 0 1.7rem
+ }
+   ol::marker {
+    font-size:2rem
+ }
+
+
+
+</style>
+
+
+{{>inside_header}}
+{{#post}}
+<article>
+  <header class="post-bg text-center bg-gray-200 py-20">
+    <div
+        class="mb-4 md:mb-0 mx-24 h-5/6 relative">
+      <img
+          src="{{feature_image}}" class="absolute left-0 top-0 w-full h-full z-0 object-cover"/>
+      <div class="absolute bottom-1/4 left-0 z-20 w-2/4">
+          <div class="bg-gray-50">
+            {{#if tags}}
+              <div class="flex flex-row-reverse gap-3">
+                {{#foreach tags}}
+                  <div class="flex flex-row-reverse">
+                    <a
+                      href="#"
+                      class="px-4 py-1 text-white font-bold uppercase text-xs"
+                      style="background-color: #F6A500;
+                      font-family: 'Titillium Web', sans-serif;"
+                    >
+                      {{name}}
+                    </a>
+                  </div>
+                {{/foreach}}
+              </div>
+            {{/if}}
+            <h1 class="text-5xl text-left xl:p-12 2xl:p-20" style="color: #119ED9">
+              {{title}}
+            </h1>
+          </div>
+      </div>
+    </div>
+  </header>
+  <div class="flex flex-row">
+  <section class="ml-24 mr-0 relative bottom-40">
+      <div class="content py-10 px-24 shadow-xl bg-white text-2xl leading-loose">
+        {{content}}
+        <div class="pt-14 text-gray-300">
+          {{#if authors}}
+            <div class="flex flex-row gap-5 justify-center items-center">
+              {{#foreach authors}}
+            <img
+            src={{profile_image}}
+            class="h-10 w-10 rounded-full object-cover"
+            />
+            <div>
+            <p class="font-semibold text-sm p-0"> Por {{name}} </p>
+            <p class="text-xs p-0">{{bio}}</p>
+            </div>
+                {{/foreach}}
+              </div>
+            {{/if}}
+          </div>
+      </div>
+  </section>
+  <section class="recent-posts mx-24 pb-10">
+        <h3 class="text-4xl pt-10 font-bold" style="color: #323b8e">
+         Posts recentes
+        </h3>
+    {{#get "posts" include="tags"  limit="3"  as |recent|}}
+        <div class="grid grid-cols-1 divide-y-8 divide-gray-500">
+          {{#foreach recent}}
+              <div class="card w-full py-10">
+            {{#if tags}}
+            <div class="flex flex-row gap-3 pb-3">
+              {{#foreach tags}}
+                <div class="flex">
+                  <a
+                    href="#"
+                    class="px-4 py-1 text-white font-bold uppercase text-xs"
+                    style="background-color: #F6A500; font-family: 'Titillium Web', sans-serif;"
+                  >
+                    {{name}}
+                  </a>
+                </div>
+              {{/foreach}}
+            </div>
+          {{/if}}
+                      <a
+                  href="{{url}}"
+                  class="leading-snug text-2xl font-bold" style="font-family: 'Titillium Web', sans-serif; color: #8a8a89">{{title}}
+                  </a>
+                  <p class="text-md my-3 pt-0">
+                    {{#if meta_description}}
+                      {{meta_description}}
+                    {{else}}
+                      {{excerpt words="40"}}
+                    {{/if}}
+                  </p>
+                </div>
+          {{/foreach}}
+        </div>
+    {{/get}}
+  </section>
+      </div>
+  </div>
+    {{> related}}
+    {{> newsletter}}
+    {{> recent_list}}
+
+</article>
+{{/post}}
